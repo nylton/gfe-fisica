@@ -10,8 +10,9 @@
 
 
 % --- Versao maneira das fontes -------
-\usepackage{Baskervaldx}         
-\usepackage{stix2}  
+\PassOptionsToPackage{full}{textcomp} % evita option clash com stix2[full]
+\usepackage{Baskervaldx}
+\usepackage{stix2}
 \linespread{1.05} 
 % \usepackage{type1ec}   ← remover esta linha
 %\usepackage[brazilian]{babel}
@@ -35,6 +36,7 @@ footskip=1.04cm,
 bottom=3.04cm}
 \usepackage[a4,cam,center,noinfo]{crop}
 \usepackage{tabularx}
+\usepackage{booktabs} % toprule/midrule/bottomrule
 \usepackage{amsmath}
 \usepackage[most]{tcolorbox}
 \usepackage{titlesec} 
@@ -54,9 +56,6 @@ bottom=3.04cm}
 \usepackage{cancel}
 \usepackage[normalem]{ulem}
 \usepackage{xfrac}
-\usepackage{tcolorbox}
-\tcbuselibrary{skins,breakable}
-\usepackage{epigraph}
 \setlength{\epigraphwidth}{0.6\textwidth}
 \setlength{\epigraphrule}{0pt}
 \usepackage{caption}
@@ -69,9 +68,6 @@ bottom=3.04cm}
 \definecolor{marfim}{RGB}{255, 253, 240} % ajuste aqui
 \pagecolor{marfim}
 \usepackage{fancyhdr}
-\usepackage{tcolorbox}
-\tcbuselibrary{skins, breakable}
-\usepackage{xcolor}
 \usepackage{siunitx}
 \usepackage{float}
 \raggedbottom          % elimina o espaço elástico entre blocos
@@ -80,8 +76,6 @@ bottom=3.04cm}
 
 %Definiçao do ambiente para apresentar equações
 % ─── Pacotes necessários ──────────────────────────────────────────
-\usepackage{xcolor}
-\usepackage[most]{tcolorbox}
 \usepackage{ifthen}
 
 % ─── Tons de cinza ────────────────────────────────────────────────
