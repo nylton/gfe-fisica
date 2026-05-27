@@ -1,0 +1,202 @@
+% !TeX spellcheck = pt_BR
+
+\chapter*{Como usar este material}
+\addcontentsline{toc}{chapter}{Como usar este material}
+
+
+
+Em um primeiro momento, o leitor pode pensar que este livro se trata de um glossário
+com todas as fórmulas de Física. Em alguma medida, isso é verdade --- as equações são
+as grandes protagonistas, e toda a organização do material se dá por esse meio. É
+possível, portanto, que o leitor escolha no sumário uma equação qualquer e a estude de
+forma isolada. Tal tarefa, contudo, será árdua para quem não estiver bem familiarizado
+com os conceitos daquele contexto. Desse modo, apesar de o material se propor a ser,
+em alguma medida, um \emph{dicionário} das equações da Física, ele foi construído para
+ser lido em ordem sequencial, de ponta a ponta --- tal como um romance, e não como
+um dicionário.
+
+Cada equação apresentada serve de base para as que virão em seguida. Assim, estudar
+o livro na exata ordem em que as equações aparecem será, o autor acredita --- e
+apostaria alguns trocados nisso ---, uma experiência ímpar. O desenrolar da teoria
+se passará como uma história, com uma trama fluida e totalmente harmônica. Alguns
+assuntos são apresentados em ordens distintas daquelas de livros didáticos
+convencionais, e tal escolha é proposital: o autor acredita que o arcabouço teórico
+de base deve ser construído de forma completa antes que se explorem suas aplicações
+e interseções. O leitor será o juiz supremo e decidirá se foi possível lograr êxito nessa tarefa.
+
+
+\section*{Como as equações são classificadas}
+
+Todas as equações apresentadas são classificadas segundo dois critérios independentes: o \textbf{nível}
+e o \textbf{tipo}.
+
+\subsection*{Quanto ao nível}
+
+Toda equação recebe uma classificação de nível I, II ou III. As de nível I são as
+mais fundamentais e devem ser estudadas por todo tipo de leitor. As de nível II são
+ligeiramente mais aprofundadas; recomenda-se seu estudo a quem se prepara para
+vestibulares de alta concorrência, como medicina, ou pretende ingressar em cursos da área de Exatas.
+As de nível III são as mais avançadas, voltadas a leitores curiosos ou a quem se
+prepara para olimpíadas e vestibulares militares como IME e ITA.
+
+A marcação do nível aparece sempre ao lado esquerdo da caixa de cada equação, como
+ilustra a Figura \ref{fig:comousar_niveis}.
+
+\begin{figure}[!h]
+\centering
+\tcbset{secnivelIlustr/.style={
+  enhanced, frame hidden, interior hidden,
+  segmentation style={cBordaF, solid, line width=0.4pt},
+  sidebyside, sidebyside align=top seam,
+  lefthand width=40pt, sidebyside gap=12pt,
+  left=0pt, right=0pt, top=4pt, bottom=4pt, boxsep=0pt,
+}}
+\begin{minipage}[t]{0.3\linewidth}
+\begin{tcolorbox}[secnivelIlustr]
+  \raggedleft\grafoI\\[6pt]\labelsnivel{I}
+\tcblower
+  {\small\bfseries Nível I}\\[4pt]
+{\small $\boxed{E_P=mgh.}$}}
+\end{tcolorbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.3\linewidth}
+\begin{tcolorbox}[secnivelIlustr]
+  \raggedleft\grafoII\\[6pt]\labelsnivel{II}
+\tcblower
+  {\small\bfseries Nível II}\\[4pt]
+  {\small $\boxed{P=F  v.}$}
+\end{tcolorbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.3\linewidth}
+\begin{tcolorbox}[secnivelIlustr]
+  \raggedleft\grafoIII\\[6pt]\labelsnivel{III}
+\tcblower
+  {\small\bfseries Nível III}\\[4pt]
+  {\small $\boxed{E =  -\dfrac{GMm}{2a}.}$
+\end{tcolorbox}
+\end{minipage}
+\caption{Os três níveis de dificuldade das equações e dos exemplos resolvidos do GFE.}
+\label{fig:comousar_niveis}
+\end{figure}
+
+
+\subsection*{Quanto ao tipo}
+
+Esta é, possivelmente, a característica mais original da obra. Encaixamos toda equação da Física
+como pertencente a exatamente um de três tipos: \textbf{Definição}, \textbf{Experimental} ou
+\textbf{Demonstrável}. Essa classificação não é um mero detalhe --- ela
+responde a uma pergunta que raramente é feita em livros didáticos:
+
+\begin{center}
+  \textit{De onde vem o direito de escrever essa igualdade?}
+\end{center}
+
+Uma \textbf{Definição} não descreve a natureza: ela cria o vocabulário com o qual a
+natureza será descrita. Quando escrevemos $v := \Delta s / \Delta t$, não estamos
+dizendo nada sobre como o mundo funciona --- estamos batizando um conceito novo, criando
+uma palavra precisa para algo que antes só se podia descrever em frases. Poderíamos ter
+dado outro nome ou outra forma à expressão; o que importa é o acordo estabelecido.
+Perceba que uma Definição não pode ser errada: ela simplesmente \emph{é}, por convenção.
+
+Uma equação \textbf{Experimental} nasce da medição. O físico monta um experimento,
+varia as grandezas envolvidas, coleta dados e identifica um padrão matemático que os
+descreve. A Lei de Coulomb, $F = kQ_1Q_2/r^2$, não foi deduzida de princípios mais
+profundos: ela foi extraída de tabelas de medição. Uma equação experimental é,
+portanto, uma \emph{síntese matemática do como a natureza se comporta} naquele contexto.
+Ela não explica por que a natureza funciona assim --- essa é, inclusive, sua característica
+essencial, não um defeito.
+
+Uma equação \textbf{Demonstrável}, por fim, não é invenção nem medição: é dedução.
+Ela surge como consequência lógica e inevitável de definições e equações experimentais
+que já foram estabelecidas. A equação $d=\frac{1}{2}at^2$, por exemplo, não
+precisa ser medida nem inventada: ela se prova, algebricamente, a partir das definições
+de velocidade e aceleração. Uma equação demonstrável, uma vez que se aceitem os
+princípios que a sustentam, é tão irrefutável quanto a conclusão de um silogismo.
+
+O tipo de cada equação é marcado logo acima de sua caixa de apresentação, como mostra
+a Figura~\ref{fig:comousar_tipos}.
+
+\begin{figure}[!h]
+\centering
+\setcounter{equation}{0}
+\renewcommand{\theequation}{\alph{equation}}
+\begin{minipage}[t]{0.3\linewidth}
+  \centering
+  \eqLdois{def}{comousar_ex_def}{v := \dfrac{\Delta s}{\Delta t}}
+  {\small\centering Definição: cria um\\conceito novo.}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.3\linewidth}
+  \centering
+  \eqLdois{exp}{comousar_ex_exp}{F = k\dfrac{Q_1 Q_2}{r^2}}
+  {\small\centering Experimental: síntese\\de dados medidos.}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.3\linewidth}
+  \centering
+  \eqLdois{dem}{comousar_ex_dem}{d = \dfrac{1}{2}at^2}
+  {\small\centering Demonstrável: consequência lógica \\ de resultados anteriores.}
+\end{minipage}
+\caption{Os três tipos epistemológicos de equação usados no GFE, cada um com seu
+indicador no canto superior esquerdo da caixa.}
+\label{fig:comousar_tipos}
+\end{figure}
+
+Toda essa estrutura conceitual é construída em detalhes no Capítulo de Introdução ---
+que não deve ser pulado, sob pena de boa parte do livro perder sentido. Por fim, o autor recomenda fortemente a leitura -- após o leitor ter concluído o estudo da obra inteira -- do Apêndice \ref{apendice-eqs-exp-vs-dem}, que traz uma breve digressão filosófica sobre a escolha pedagógica de se classificar as equações nessas três categorias.
+
+
+\section*{O que há dentro de cada equação}
+
+Após a apresentação da equação e de sua classificação, quatro tópicos são desenvolvidos
+sistematicamente:
+
+\begin{enumerate}
+  \item[\textbf{De onde vem.}] É aqui que reside o coração da obra. Este tópico responde
+  por que a equação existe, como ela foi criada ou deduzida, e qual o problema físico que
+  motivou seu surgimento. O leitor não encontrará aqui um ``saber de cor'', mas uma
+  história --- às vezes histórica, às vezes geométrica, às vezes lógica --- que torna
+  a fórmula memorável não por repetição, mas por compreensão.
+
+  \item[\textbf{Onde é usada.}] Toda equação serve a alguma coisa. Este tópico apresenta
+  os contextos físicos em que a equação aparece, os tipos de problema que ela permite
+  resolver e as grandezas que ela conecta. O objetivo é que o leitor saiba não apenas
+  o que a equação diz, mas quando é adequado invocá-la.
+
+  \item[\textbf{Erros comuns.}] A experiência de quem ensina Física revela que certos
+  enganos aparecem com uma regularidade quase estatística. Este tópico os cataloga:
+  confusões de sinais, substituições apressadas, interpretações equivocadas de grandezas
+  vetoriais, unidades trocadas. Ler este tópico antes de fazer exercícios pode poupar
+  ao leitor horas de frustração.
+
+  \item[\textbf{Observações.}] Casos especiais, identidades úteis, conexões com outras
+  equações do livro, extensões do resultado e nuances que não cabem nos tópicos
+  anteriores. Este é o espaço para os detalhes que o autor não quis perder, mas que
+  tampouco cabiam na narrativa principal.
+\end{enumerate}
+
+
+\section*{Os exemplos resolvidos}
+
+Ao final de cada equação, após os quatro tópicos acima, são resolvidos exemplos
+classificados também em nível I, II e III --- seguindo exatamente o mesmo critério
+da classificação das equações. Os de nível I são exercícios de aplicação direta: exigem
+apenas reconhecer a equação correta e substituir os dados. Os de nível II cruzam dois
+ou mais conceitos e exigem um pouco mais de articulação. Os de nível III são os mais
+desafiadores: diversas questões são autorais, mas muitas também são questões de olimpíadas, de livros russos ou do próprio
+ITA\slash IME, e exigem encadeamento lógico, análise qualitativa e, quase sempre, uma
+virada conceitual --- o momento em que a solução depende de se ver o problema de um
+ângulo completamente diferente.
+
+O autor encoraja que o leitor tente resolver cada exemplo antes de ler a solução. Em
+especial, que não desanime diante dos de nível III: eles são difíceis por construção.
+
+
+\section*{Sobre a Introdução}
+
+O material começa oficialmente no Capítulo~\ref{chapter_intro}, e ele \textbf{não deve
+ser pulado}. A Introdução não é uma formalidade nem um prefácio alongado: é nela que
+toda a estrutura conceitual da classificação das equações é construída do zero, com
+paciência e exemplos. Sem ela, os indicadores de tipo que aparecem em cada equação
+serão apenas símbolos decorativos, e a promessa do livro --- de que o leitor entenderá
+não apenas \emph{o que} as equações dizem, mas \emph{de onde elas vieram} --- não
+poderá ser cumprida. O autor fez questão de que a Introdução fosse uma leitura
+agradável, e não um obstáculo. Leia-a.

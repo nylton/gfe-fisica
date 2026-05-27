@@ -1,0 +1,741 @@
+\documentclass[a4paper, 10pt,twoside]{book}
+\let\cleardoublepage\clearpage
+\usepackage{graphicx} % Required for inserting images
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% --- Versao palatini das fontes -------
+% \usepackage{newpxtext}   % Palatino com versaletes reais
+% \usepackage{newpxmath}   % fonte matemática companion (inclui amssymb)
+
+
+% --- Versao maneira das fontes -------
+\usepackage{Baskervaldx}         
+\usepackage{stix2}  
+\linespread{1.05} 
+% \usepackage{type1ec}   ← remover esta linha
+%\usepackage[brazilian]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage{indentfirst}
+\usepackage{epigraph} 
+
+
+\usepackage[dvips=false,pdftex=false,vtex=false]{geometry}
+\geometry{layoutsize={180mm,250mm},
+layoutoffset=-5mm,
+papersize={170mm,240mm},
+marginparsep=0mm,
+inner=2.5cm,
+outer=2.5cm,
+%headheight=12.1638pt,
+headheight=12.80502pt,
+headsep=0.5cm,
+top=3.04cm,
+footskip=1.04cm,
+bottom=3.04cm}
+\usepackage[a4,cam,center,noinfo]{crop}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage[most]{tcolorbox}
+\usepackage{titlesec} 
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,calc}
+\usetikzlibrary{positioning}
+\setlength{\parindent}{20pt}
+\usepackage{CJKutf8}
+\usepackage[greek,portuguese]{babel}
+\addto\extrasportuguese{%
+  \renewcommand{\appendixautorefname}{Apêndice}%
+  \renewcommand{\chapterautorefname}{Apêndice}%  
+}
+\usepackage{cancel}
+\usepackage[normalem]{ulem}
+\usepackage{xfrac}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.6\textwidth}
+\setlength{\epigraphrule}{0pt}
+\usepackage{caption}
+\captionsetup{
+  justification=centering,
+  labelfont=bf,
+  font=small
+}
+\usepackage{xcolor}
+\definecolor{marfim}{RGB}{255, 253, 240} % ajuste aqui
+\pagecolor{marfim}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\usepackage{float}
+\raggedbottom          % elimina o espaço elástico entre blocos
+\usepackage{needspace} % evita exemplos "órfãos" no fim de página
+
+
+%Definiçao do ambiente para apresentar equações
+% ─── Pacotes necessários ──────────────────────────────────────────
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usepackage{ifthen}
+
+% ─── Tons de cinza ────────────────────────────────────────────────
+\definecolor{cPreto}{gray}{0.10}
+\definecolor{cMedio}{gray}{0.44}
+\definecolor{cBorda}{gray}{0.62}
+\definecolor{cBordaF}{gray}{0.76}
+
+
+
+% ─── Três círculos indicadores ────────────────────────────────────
+\newcommand{\tresC}[1]{%
+  \begin{tikzpicture}[baseline=0.10ex, scale=0.95]
+    \ifthenelse{\equal{#1}{def}}
+      {\fill[cPreto](0.28em,0.28em)circle(0.28em);}
+      {\draw[cBorda,line width=0.5pt](0.28em,0.28em)circle(0.28em);}
+    \ifthenelse{\equal{#1}{exp}}
+      {\fill[cPreto](1.06em,0.28em)circle(0.28em);}
+      {\draw[cBorda,line width=0.5pt](1.06em,0.28em)circle(0.28em);}
+    \ifthenelse{\equal{#1}{dem}}
+      {\fill[cPreto](1.84em,0.28em)circle(0.28em);}
+      {\draw[cBorda,line width=0.5pt](1.84em,0.28em)circle(0.28em);}
+  \end{tikzpicture}%
+}
+
+% ─── Nome do tipo ─────────────────────────────────────────────────
+\newcommand{\nomeTipo}[1]{%
+  \ifthenelse{\equal{#1}{def}}{Defini\c{c}\~ao}%
+  {\ifthenelse{\equal{#1}{exp}}{Experimental}{Demonstr\'avel}}%
+}
+
+% ─── Estilo da caixa justa ────────────────────────────────────────
+\tcbset{caixaJusta/.style={
+  tcbox raise base,
+  blanker, sharp corners,
+  borderline={0.5pt}{0pt}{cBordaF},
+  boxsep=0pt,
+  left=14pt, right=14pt, top=10pt, bottom=10pt,
+  on line,
+}}
+
+% ─── Comando principal ────────────────────────────────────────────
+% Uso: \eqLdois{def|exp|dem}{label}{expressão LaTeX sem \[ \]}
+
+\newcommand{\eqLdois}[3]{%
+  \refstepcounter{equation}\label{#2}%
+  \par\vspace{8pt}%
+  \noindent
+  \phantom{{\fontsize{10}{12}\selectfont\sffamily\bfseries(\theequation)}}%
+  \hfill
+  \tcbox[%
+    caixaJusta,
+    overlay={%
+      \node[anchor=west,
+            fill=pagina,
+            inner xsep=5pt, inner ysep=2pt]
+        at ([xshift=10pt]frame.north west)
+        {%
+          \tresC{#1}\enspace
+          {\fontsize{7.5}{9}\selectfont\sffamily\color{cMedio}\nomeTipo{#1}}%
+        };%
+    }%
+  ]{$\displaystyle #3$}%
+  \hfill
+  {\fontsize{10}{12}\selectfont\sffamily\bfseries\color{cMedio}(\theequation)}%
+  \vspace{6pt}%
+}
+
+%Simbologia do nivel de dificuldade
+% ─── Grafos (adicionar junto ao bloco existente) ──────────────────
+\newcommand{\grafoI}{%
+  \tikz[baseline=-1pt]{%
+    \fill[cPreto](0,0)circle(2.2pt);}%
+}
+\newcommand{\grafoII}{%
+  \tikz[baseline=-1pt]{%
+    \fill[cPreto](0,0)circle(2.2pt);%
+    \draw[cPreto,line width=0.8pt](0.055,0)--(0.265,0);%
+    \fill[cPreto](0.32,0)circle(2.2pt);}%
+}
+\newcommand{\grafoIII}{%
+  \tikz[baseline=1pt]{%
+    \coordinate(A)at(0.16,0.26);%
+    \coordinate(B)at(0,0);%
+    \coordinate(C)at(0.32,0);%
+    \draw[cPreto,line width=0.8pt](A)--(B)--(C)--(A);%
+    \fill[cPreto](A)circle(2.2pt);%
+    \fill[cPreto](B)circle(2.2pt);%
+    \fill[cPreto](C)circle(2.2pt);}%
+}
+
+% ─── Labels dos níveis ────────────────────────────────────────────
+\newcommand{\labelsnivel}[1]{%
+  \fontsize{7}{9}\selectfont\sffamily
+  \ifthenelse{\equal{#1}{I}}{%
+    \textcolor{cPreto}{nível I}\\[3pt]%
+    \textcolor{cBorda}{nível II}\\[3pt]%
+    \textcolor{cBorda}{nível III}}{}%
+  \ifthenelse{\equal{#1}{II}}{%
+    \textcolor{cBorda}{nível I}\\[3pt]%
+    \textcolor{cPreto}{nível II}\\[3pt]%
+    \textcolor{cBorda}{nível III}}{}%
+  \ifthenelse{\equal{#1}{III}}{%
+    \textcolor{cBorda}{nível I}\\[3pt]%
+    \textcolor{cBorda}{nível II}\\[3pt]%
+    \textcolor{cPreto}{nível III}}{}%
+}
+
+% ─── Estilo do tcolorbox sidebyside ───────────────────────────────
+\tcbset{secnivelSS/.style={
+  enhanced,
+  frame hidden,
+  interior hidden,
+  segmentation style={cBordaF, solid, line width=0.4pt},
+  sidebyside,
+  sidebyside align=top seam,
+  lefthand width=52pt,
+  sidebyside gap=18pt,
+  left=0pt, right=0pt,
+  top=0pt, bottom=0pt,
+  boxsep=0pt,
+}}
+
+% ─── Ambiente secnivel ────────────────────────────────────────────
+% Substitui \subsection inteiramente.
+% Uso: \begin{secnivel}{I}{Título da equação} ... \end{secnivel}
+
+\newenvironment{secnivel}[3][]{%
+  \par\addvspace{16pt}%
+  \refstepcounter{subsection}%
+  \def\secnivel@@short{#1}%
+  \ifx\secnivel@@short\empty
+    \def\secnivel@@head{#3}%
+  \else
+    \def\secnivel@@head{#1}%
+  \fi
+  \addcontentsline{toc}{subsection}%
+    {\protect\numberline{\thesubsection}\secnivel@@head}%
+  \markright{\thesubsection\enspace\secnivel@@head}%
+  \begin{tcolorbox}[secnivelSS]%
+    \raggedleft\vspace{4pt}%
+    \ifthenelse{\equal{#2}{I}}{\grafoI}{}%
+    \ifthenelse{\equal{#2}{II}}{\grafoII}{}%
+    \ifthenelse{\equal{#2}{III}}{\grafoIII}{}%
+    \\[6pt]%
+    \labelsnivel{#2}%
+  \tcblower
+    {{\fontsize{15}{18}\selectfont\color{cNumSec}\thesubsection}%
+ \kern 9pt%
+ {\fontsize{13}{15}\selectfont\scshape\textls[60]{#3}}}%
+    \par\vspace{5pt}%
+    \noindent\ignorespaces
+}{%
+  \end{tcolorbox}%
+  \par\addvspace{6pt}%
+}
+
+
+% Estilizado para apresentação das subsecoes principais de cada formula
+\usepackage{microtype} % opcional, melhora o spacing do \textsc
+
+\newcommand{\secgfe}[1]{%
+    \needspace{3\baselineskip}%   ← garante espaço antes de iniciar
+    \vspace{2.5em}%
+    \noindent\rule{\linewidth}{2pt}\\[6pt]%
+    \noindent\hbox to \linewidth{%
+        \hrulefill\quad
+        {\normalsize\textls[60]{\textsc{#1}}}%
+        \quad\hrulefill%
+    }%
+    \vspace{1.2em}\par \nobreak
+}
+
+
+% Criacao de ajuste para apresentar as partes no sumário
+\usepackage{etoolbox}
+ 
+% \thepart sem " -" final
+\renewcommand{\thepart}{%
+  \ifnum\value{part}=1 Primeiro~Ato%
+  \else\ifnum\value{part}=2 Segundo~Ato%
+  \else Terceiro~Ato%
+  \fi\fi
+}
+ 
+% Garante que babel não reinsira "Parte"
+\addto\extrasportuguese{\renewcommand{\partname}{}}
+
+
+
+\counterwithin{figure}{chapter}
+
+
+% FORMATAÇÃO DE CAPÍTULOS E SEÇÕES — GFE (v3)
+% Inserir no preâmbulo de main.tex, após:
+%   \counterwithin{figure}{chapter}
+% ═══════════════════════════════════════════════════════════════════
+ 
+% ── Cores dos numerais ──────────────────────────────────────────
+\definecolor{cNumCap}{RGB}{212,208,186}
+\definecolor{cNumSec}{RGB}{74,70,56}
+ 
+% ── Comandos explícitos para os títulos ─────────────────────────
+% CRÍTICO: devem tomar #1 explicitamente.
+% Quando o before-code de \titleformat é um \comando (sem chaves),
+% o titlesec passa o título como argumento — sem ambiguidade de escopo.
+\newcommand{\tituloCap}[1]{%
+  \fontsize{22}{26}\selectfont\scshape\textls[60]{#1}%
+}
+\newcommand{\tituloCapNum}[1]{%       % para \chapter* (sem número)
+  \fontsize{20}{24}\selectfont\scshape\textls[60]{#1}%
+}
+\newcommand{\tituloSec}[1]{%
+  \fontsize{13}{15}\selectfont\scshape\textls[80]{#1}%
+}
+ 
+% ── Régua dupla sem TikZ e sem \rlap ────────────────────────────
+% Usa \hrulefill nos flancos + \rule espesso no centro.
+% Funciona corretamente em display mode e em contexto \centering.
+\newcommand{\regraDupla}{%
+  \par\noindent
+  \hbox to \linewidth{%
+    \color{cBordaF}\hrulefill
+    \kern6pt\color{cMedio}\rule[0.15pt]{0.36\linewidth}{0.9pt}\kern6pt
+    \color{cBordaF}\hrulefill
+  }%
+  \par
+}
+ 
+% ── \@chapapp exige makeatletter ────────────────────────────────
+\makeatletter
+ 
+% ── Capítulo numerado — Opção D ─────────────────────────────────
+\titleformat{\chapter}[display]
+  {\normalfont\centering}
+  {%
+    {\fontsize{60}{60}\selectfont\color{cNumCap}\thechapter}\\[4pt]%
+    {\fontsize{8}{10}\selectfont\sffamily\color{cMedio}%
+     \textls[220]{\MakeUppercase{\@chapapp}}}\\[8pt]%
+    \regraDupla
+  }
+  {6pt}
+  \tituloCap
+  [\vspace{6pt}%
+   \noindent\hfil\textcolor{cBordaF}{\rule{0.45\linewidth}{0.4pt}}\hfil]
+ 
+%                     left  before  after(text begins)
+\titlespacing*{\chapter}{0pt}{50pt}{28pt}
+ 
+% ── Capítulo sem número (\chapter*, intropart) ──────────────────
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\centering}
+  {}
+  {0pt}
+  \tituloCapNum
+  [\vspace{6pt}%
+   \noindent\hfil\textcolor{cBordaF}{\rule{0.45\linewidth}{0.4pt}}\hfil]
+ 
+\makeatother
+ 
+% ── Seção — S7-C ────────────────────────────────────────────────
+\titleformat{\section}[block]
+  {\normalfont}
+  {\fontsize{20}{20}\selectfont\color{cNumSec}\thesection}
+  {10pt}
+  \tituloSec
+  [\vspace{1pt}\noindent\textcolor{cBordaF}{\rule{\linewidth}{0.4pt}}]
+ 
+\titlespacing*{\section}{0pt}{22pt}{10pt}
+
+% ── Adições à v3 ─────────────────────────────────────────────────
+% Inserir logo após \titlespacing*{\section}{0pt}{22pt}{10pt}
+% ─────────────────────────────────────────────────────────────────
+ 
+% Wrappers explícitos (mesmo padrão dos outros níveis)
+\newcommand{\tituloSubSec}[1]{%
+  \fontsize{13}{15}\selectfont\scshape\textls[60]{#1}%
+}
+\newcommand{\tituloSubSubSec}[1]{%
+  \fontsize{12}{14}\selectfont\itshape #1%
+}
+ 
+% ── Subseção — eco do S7-C, sem régua inferior ───────────────────
+%
+%  1.2.1   Definições     ← 15pt cNumSec + 13pt small-caps
+%
+\titleformat{\subsection}[block]
+  {\normalfont}
+  {\fontsize{15}{18}\selectfont\color{cNumSec}\thesubsection}
+  {9pt}
+  \tituloSubSec
+ 
+\titlespacing*{\subsection}{0pt}{18pt}{8pt}
+ 
+% ── Subsubseção — nível mais discreto, só itálico ────────────────
+%
+%  1.2.1.1   Período do Pêndulo Simples    ← 13pt cNumSec + 12pt itálico
+%
+\titleformat{\subsubsection}[block]
+  {\normalfont}
+  {\fontsize{13}{15}\selectfont\color{cNumSec}\thesubsubsection}
+  {8pt}
+  \tituloSubSubSec
+ 
+\titlespacing*{\subsubsection}{0pt}{14pt}{6pt}
+ 
+% ── Corrige cabeçalhos ──────────────────────────────────────────
+\renewcommand{\sectionmark}[1]{\markright{\thesection\enspace#1}}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+
+
+
+\makeatletter
+
+ 
+% ── Epígrafe do Ato — estilo E1 (centrada, régua, itálico) ──────
+% Usar logo após cada \part{} em main.tex.
+% O \clearpage aqui inicia nova página para o intropart.
+\newcommand{\epigrafeato}[2]{%
+  \vspace*{2.5cm}%
+  \begin{center}%
+    \textcolor{cBordaF}{\rule{0.28\linewidth}{0.4pt}}\\[14pt]%
+    {\small\itshape #1}\\[10pt]%
+    {\footnotesize\scshape #2}%
+  \end{center}%
+  \clearpage%
+}
+ 
+% ── Página do Ato: redefinição direta de \@part ─────────────────
+% BYPASS COMPLETO do titlesec para \part.
+% Motivo: \titleformat{\part} com qualquer fonte vaza para o miolo.
+% Aqui TODAS as mudanças de fonte estão dentro de um grupo {}.
+%
+%        PRIMEIRO ATO          ← 8pt sffamily rastreado
+%             I                ← 52pt cNumCap
+%       ── ──────── ──         ← régua dupla
+%         Cinemática           ← 22pt scshape rastreado
+%           ──────             ← régua fina 45%
+%     (epígrafe via \epigrafeato, na mesma página)
+%
+\renewcommand{\@part}[2][]{%
+  % ── TOC ──────────────────────────────────────────────────────
+  \ifnum\c@secnumdepth >-2\relax
+    \refstepcounter{part}%
+    \addcontentsline{toc}{part}{\thepart~---~#1}%
+  \else
+    \addcontentsline{toc}{part}{#1}%
+  \fi
+  \markboth{}{}%
+  % ── Conteúdo da página ───────────────────────────────────────
+  % CRÍTICO: todo dentro de um grupo {} — garante zero leaking
+  {%
+    \centering\normalfont
+    \vspace*{0.14\textheight}%
+    % tag "PRIMEIRO ATO"
+    {\fontsize{8}{10}\selectfont\sffamily\color{cMedio}%
+     \textls[220]{\MakeUppercase{\thepart}}\par}%
+    \vspace{8pt}%
+    % numeral romano
+    {\fontsize{52}{52}\selectfont\color{cNumCap}%
+     \Roman{part}\par}%
+    \vspace{10pt}%
+    % régua dupla
+    \regraDupla\par%
+    \vspace{8pt}%
+    % título do Ato
+    {\fontsize{22}{26}\selectfont%
+     \textls[60]{\scshape #2}\par}%
+    \vspace{8pt}%
+    % régua inferior
+    \noindent\makebox[\linewidth]{%
+      \textcolor{cBordaF}{\rule{0.45\linewidth}{0.4pt}}}%
+  }% ← fecha grupo: fontes resetam aqui
+  \thispagestyle{empty}
+  \@endpart
+}
+ 
+% ── \@endpart sem newpage ────────────────────────────────────────
+% Com \@endpart vazio, o \epigrafeato (chamado logo após \part{})
+% aparece na MESMA página do título do Ato.
+% O \clearpage dentro de \epigrafeato cria a quebra para o capítulo.
+\renewcommand{\@endpart}{}
+ 
+% ── \chapter* ────────────────────────────────────────────────────
+% Bypass do {name=\chapter,numberless} do titlesec — mais robusto.
+\renewcommand{\@makeschapterhead}[1]{%
+  \vspace*{30\p@}%
+  {%
+    \parindent\z@\centering\normalfont
+    {\fontsize{20}{24}\selectfont%
+     \textls[60]{\scshape #1}\par}%
+    \nobreak
+    \vspace{8pt}%
+    \noindent\makebox[\linewidth]{%
+      \textcolor{cBordaF}{\rule{0.45\linewidth}{0.4pt}}}%
+    \vskip 28\p@
+  }%
+}
+ 
+\makeatother
+
+
+
+
+
+
+
+
+% ─── Separador de soluções alternativas ──────────────────────────
+\newcommand{\sepsolucao}[1]{%
+  \par\vspace{8pt}%
+  \noindent\hbox to \linewidth{%
+    \hrulefill\quad
+    {\fontsize{8}{10}\selectfont\textls[60]{\textsc{#1}}}%
+    \quad\hrulefill%
+  }%
+  \par\vspace{6pt}%
+}
+
+
+
+
+
+% ──  Ilustraços dos Atos  ──────────────────────────
+
+\newcommand{\paginailustracaoato}[1]{%
+  \clearpage
+  \thispagestyle{empty}%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node at (current page.center) {%
+      \includegraphics[width=\paperwidth, height=\paperheight]{#1}%
+    };
+  \end{tikzpicture}%
+    \clearpage
+}
+
+
+% Ornamento de fechamento do livro
+\newcommand{\fechamentodolivro}{%
+  \vspace{2.5em}%
+  \begin{center}%
+    \textcolor{cBordaF}{\rule{0.18\linewidth}{0.4pt}}%
+    \quad{\large\textcolor{cMedio}{\textasteriskcentered}}%
+    \quad{\large\textcolor{cMedio}{\textasteriskcentered}}%
+    \quad{\large\textcolor{cMedio}{\textasteriskcentered}}%
+    \quad\textcolor{cBordaF}{\rule{0.18\linewidth}{0.4pt}}%
+  \end{center}%
+}
+
+
+% Separador de apêndices no sumário — inserir no preâmbulo
+\newcommand{\tocsepapendices}{%
+  \vspace{6pt}%
+  \noindent\makebox[\linewidth]{%
+    \textcolor{cBordaF}{\hrulefill}\enspace
+    {\small\scshape\textls[60]{Apêndices}}%
+    \enspace\textcolor{cBordaF}{\hrulefill}%
+  }\par\vspace{4pt}%
+}
+
+
+
+
+
+
+
+
+
+\title{%
+  Guia de Fórmulas Explicadas\\[0.3cm]
+  {\huge Física}\\[0.4cm]
+  {\normalsize Volume I --- Mecânica}%
+}
+\author{Felipe Guisoli}
+\date{} 
+
+
+
+
+
+
+
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrule}{%
+  {\color{cBordaF}\hrule width\headwidth height 0.3pt}}
+
+% Página par (esquerda): capítulo no cabeçalho, número embaixo
+\fancyhead[LE]{%
+  \fontsize{8}{10}\selectfont\sffamily\color{cMedio}%
+  \textls[80]{\MakeUppercase{\leftmark}}%
+}
+
+% Página ímpar (direita): seção no cabeçalho, número embaixo
+\fancyhead[RO]{%
+  \fontsize{8}{10}\selectfont\itshape\nouppercase{\rightmark}%
+}
+
+% Rodapé: número à esquerda nas pares, à direita nas ímpares
+\fancyfoot[LE]{\fontsize{9}{11}\selectfont\sffamily\color{cMedio}\thepage}
+\fancyfoot[RO]{\fontsize{9}{11}\selectfont\sffamily\color{cMedio}\thepage}
+
+\fancypagestyle{plain}{%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyhf{}%
+  \fancyfoot[LE]{\fontsize{9}{11}\selectfont\sffamily\color{cMedio}\thepage}%
+  \fancyfoot[RO]{\fontsize{9}{11}\selectfont\sffamily\color{cMedio}\thepage}%
+}
+
+
+\begin{document}
+
+
+% ─────────────────────────────────────────────────────────────────────
+% Cor da página — usada também como fundo da caixa
+% Ajuste o RGB conforme o papel escolhido
+% ─────────────────────────────────────────────────────────────────────
+\definecolor{pagina}{RGB}{255,252,235}
+\pagecolor{pagina}
+
+% ─────────────────────────────────────────────────────────────────────
+% Contador de exemplos (reseta a cada capítulo)
+% ─────────────────────────────────────────────────────────────────────
+\newcounter{exemplo}[chapter]
+\renewcommand{\theexemplo}{\thechapter.\arabic{exemplo}}
+
+% ─────────────────────────────────────────────────────────────────────
+% Separador enunciado / resolução
+% Traço curto centrado, espaçamento compacto
+% ─────────────────────────────────────────────────────────────────────
+\newcommand{\resolucao}{%
+  \par\vspace{8pt}%
+  \noindent\hbox to \linewidth{%
+    \hrulefill\quad
+    {\fontsize{8}{10}\selectfont\textls[60]{\textsc{resolução}}}%
+    \quad\hrulefill%
+  }%
+  \par\vspace{6pt}%
+}
+
+% ─────────────────────────────────────────────────────────────────────
+% Ambiente de exemplo
+% Uso: \begin{exemplo}[Nível I] ... \resolucao ... \end{exemplo}
+%      \begin{exemplo}           ... \resolucao ... \end{exemplo}
+% ─────────────────────────────────────────────────────────────────────
+\newtcolorbox{exemplo}[1][]{%
+  enhanced, breakable,
+  colback=pagina,
+  colframe=black,
+  boxrule=0.5pt, arc=0pt,
+  top=14pt, bottom=10pt, left=10pt, right=10pt,
+  overlay unbroken and first={%
+    \node[anchor=center,
+          fill=pagina,
+          inner xsep=8pt, inner ysep=1pt,
+          font=\normalsize]
+      at (frame.north)
+      {%
+        \refstepcounter{exemplo}%
+        \textbf{Exemplo~\theexemplo}%
+        \if\relax\detokenize{#1}\relax\else
+          \kern8pt{\color{black!35}\rule[-1pt]{0.5pt}{9pt}}\kern8pt%
+          \textit{#1}%
+        \fi
+      };
+  },
+}
+
+
+
+
+
+
+
+
+\maketitle
+
+
+
+\tableofcontents
+
+\include{00dedicatoria}
+\include{prefacio}
+\include{00comousar}
+\include{00introducao}
+
+
+
+\paginailustracaoato{imagens_artes/galileuactone.png}
+
+\part{Cinemática}
+\epigrafeato{%
+  Meu objetivo é expor uma ciência muito nova que trata de um
+  tema muito antigo. Talvez nada na natureza seja mais antigo
+  que o movimento\ldots%
+}{Galileo Galilei}
+
+    
+\include{intropart1}
+\include{partIcinematica01escalar}
+\include{partIcinematica02vetor}
+
+
+\paginailustracaoato{imagens_artes/newton.png}
+
+\part{Dinâmica}
+\epigrafeato{%
+  O próximo grande passo no desenvolvimento de nossa compreensão
+  do mundo foi este: as forças não são o que se precisa para
+  produzir movimento; as forças são o que se precisa para
+  produzir variações no movimento.%
+}{Richard P. Feynman}
+
+
+\include{intropart2}
+\include{partIIdinamica01newton}
+\include{partIIdinamica02energia}
+
+
+
+\paginailustracaoato{imagens_artes/ato3.png}
+
+\part{Aplicações}
+\epigrafeato{%
+  Passo agora a demonstrar o sistema do mundo.%
+}{Isaac Newton, \emph{Philosophiæ Naturalis Principia Mathematica},
+  Livro III, 1687}
+
+
+\include{intropart3}
+\include{partIV0gravidade}
+\include{partIVhidrostatica}
+
+
+\clearpage
+\appendix
+\renewcommand{\thechapter}{\Alph{chapter}}
+
+\include{apendice_eqsexpvsdem}
+\include{apendiceareagraficovxt}
+\include{apendiceteoremaenergiacinetica}
+\include{apendicearte}
+
+\nocite{*}
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}
+
+
+
+
+
