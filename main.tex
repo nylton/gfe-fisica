@@ -128,6 +128,10 @@ bottom=3.04cm}
 % QR code para pagina de errata participativa (back matter)
 \usepackage{qrcode}
 
+% Indice remissivo (\index{termo} no body + \printindex no back matter)
+\usepackage{makeidx}
+\makeindex
+
 % --- Fase B-2: Pull quote Variante B (aspas tipograficas grandes) ---
 % Spec: definicoes-diagramacao/implementacao_pullquote_variante_B.md
 % Uso: \pullquote{texto} ou \pullquote[atribuicao]{texto}
@@ -826,6 +830,8 @@ bottom=3.04cm}
 \nocite{*}
 \bibliographystyle{apalike}
 \bibliography{references}
+
+\printindex
 
 \include{errata}
 
