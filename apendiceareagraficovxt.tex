@@ -33,25 +33,6 @@ No gráfico de $v$ por $t$, a velocidade constante corresponde a uma linha horiz
 
 
 
-% \vspace{0.3cm}
-% {
-% \centering
-% \begin{tikzpicture}[>=stealth, font=\small]
-%   \fill[gray!20] (0.6,0) rectangle (3.2,1.8);
-%   \draw[->] (0,0) -- (4.0,0) node[right] {$t$};
-%   \draw[->] (0,0) -- (0,2.6) node[above] {$v$};
-%   \draw[thick] (0.6,1.8) -- (3.2,1.8);
-%   \draw[dashed, thin, gray!70] (0.6,0) -- (0.6,1.8);
-%   \draw[dashed, thin, gray!70] (3.2,0) -- (3.2,1.8);
-%   \draw (0.06,1.8) -- (-0.06,1.8) node[left] {$v$};
-%   \node[below] at (0.6,0) {\scriptsize $t_0$};
-%   \node[below] at (3.2,0) {\scriptsize $t_0\!+\!\Delta t$};
-%   \node at (1.9,0.9) {$d = v\cdot\Delta t$};
-% \end{tikzpicture}
-% \captionof{figure}{}
-% \label{fig_apendice_area_constante}
-% }
-% \vspace{0.3cm}
 
 Até aqui, tudo simples. O problema começa quando a velocidade não é constante. Na vida real, os corpos raramente se movem com velocidade constante. Um carro que acelera, uma bola que cai, um atleta correndo --- em todos esses casos, $v$ muda a cada instante. Nessa situação, a equação $d = v \cdot \Delta t$ não faz mais sentido diretamente: qual valor de $v$ usaríamos? O do início? O do fim? A média? Nenhum desses é exato: precisamos de outro caminho.
 
@@ -78,61 +59,6 @@ Contudo, note que, geometricamente, $v_i \cdot \Delta t_i$ é a área de um ret�
 } 
 \vspace{0.3cm}
 
-% \vspace{0.3cm}
-% {
-% \centering
-% \begin{tikzpicture}[>=stealth, font=\small, scale=0.85, baseline=0pt]
-%   \draw[thick, domain=0.3:3.5, samples=60]
-%     plot (\x, {0.25 + 0.52*(\x-0.3) + 0.04*(\x-0.3)^2});
-%   \fill[gray!30] (1.75,0) rectangle (2.15,1.12);
-%   \draw[thin] (1.75,0) rectangle (2.15,1.12);
-%   \draw[->] (0,0) -- (4.0,0) node[right] {$t$};
-%   \draw[->] (0,0) -- (0,2.6) node[above] {$v$};
-%   \draw[thick, domain=0.3:3.5, samples=60]
-%     plot (\x, {0.25 + 0.52*(\x-0.3) + 0.04*(\x-0.3)^2});
-%   \draw (0.06,1.12) -- (-0.06,1.12) node[left] {\scriptsize $v_i$};
-%   \draw[dashed, thin, gray!70] (1.75,0) -- (1.75,1.12);
-%   \draw[<->] (1.75,-0.28) -- (2.15,-0.28);
-%   \draw (1.75, 0.05) -- (1.75,-0.05);
-%   \draw (2.15, 0.05) -- (2.15,-0.05);
-%   \node[below, font=\scriptsize] at (1.95,-0.28) {$\Delta t_i$};
-%   \node[font=\scriptsize] at (1.95, 2.5) {uma fatia};
-% \end{tikzpicture}
-% \hfill
-% \begin{tikzpicture}[>=stealth, font=\small, scale=0.85, baseline=0pt]
-%   \foreach \x/\h in {
-%     0.40/0.30, 0.78/0.51, 1.16/0.73,
-%     1.54/0.96, 1.92/1.20, 2.30/1.45,
-%     2.68/1.71, 3.06/1.99}{
-%     \fill[gray!20] (\x,0) rectangle (\x+0.35,\h);
-%     \draw[thin, gray!60] (\x,0) rectangle (\x+0.35,\h);
-%   }
-%   \draw[->] (0,0) -- (4.0,0) node[right] {$t$};
-%   \draw[->] (0,0) -- (0,2.6) node[above] {$v$};
-%   \draw[thick, domain=0.3:3.5, samples=60]
-%     plot (\x, {0.25 + 0.52*(\x-0.3) + 0.04*(\x-0.3)^2});
-%   \node[font=\scriptsize] at (1.95, 2.5) {todas as fatias};
-% \end{tikzpicture}
-% \hfill
-% \begin{tikzpicture}[>=stealth, font=\small, scale=0.85, baseline=0pt]
-%   \fill[gray!20]
-%     (0.3, 0) --
-%     plot[domain=0.3:3.5, samples=60]
-%       (\x, {0.25 + 0.52*(\x-0.3) + 0.04*(\x-0.3)^2}) --
-%     (3.5, 0) -- cycle;
-%   \draw[->] (0,0) -- (4.0,0) node[right] {$t$};
-%   \draw[->] (0,0) -- (0,2.6) node[above] {$v$};
-%   \draw[thick, domain=0.3:3.5, samples=60]
-%     plot (\x, {0.25 + 0.52*(\x-0.3) + 0.04*(\x-0.3)^2});
-%   \draw[dashed, thin, gray!70] (0.3,0) -- (0.3,0.25);
-%   \draw[dashed, thin, gray!70] (3.5,0) -- (3.5,2.32);
-%   \node at (1.9, 0.75) {$d$};
-%   \node[font=\scriptsize] at (1.95, 2.5) {limite: área exata};
-% \end{tikzpicture}
-% \captionof{figure}{Da esquerda para a direita: uma fatia isolada com altura $v_i$ e largura $\Delta t_i$; a soma de todas as fatias (aproximação da área); no limite de fatias infinitamente finas, a área exata corresponde à distância total percorrida.}
-% \label{fig_apendice_area_fatias}
-% }
-% \vspace{0.3cm}
 
 Assim, se para o intervalo de tempo bem curto $\Delta t_i$ a distância percorrida seria a área do retângulo da primeira imagem da Figura \ref{fig_apendice_area_fatias}, podemos dividir o intervalo de tempo total de movimento $\Delta t$ em vários intervalos $\Delta t_i$ muito pequenos, de modo que, nestes intervalos, a velocidade praticamente não mude e seja possível aplicar $\Delta d_i = v_i \Delta t_i.$ Isso é o que aparece na segunda imagem da figura.
 
@@ -185,51 +111,5 @@ A lógica desenvolvida acima não depende de nenhuma propriedade especial da vel
 } 
 \vspace{0.3cm}
 
-% \vspace{0.3cm}
-% {
-% \centering
-% \begin{minipage}[t]{0.45\linewidth}
-% \centering
-% \begin{tikzpicture}[>=stealth, font=\small, scale=0.90]
-%   % área F(t) — forma de sino
-%   \fill[gray!20]
-%     (0.4,0) --
-%     plot[smooth, tension=0.6] coordinates {
-%       (0.4,0.05) (0.8,0.55) (1.3,1.30)
-%       (1.9,2.00) (2.5,1.70) (3.0,0.90) (3.5,0.10)
-%     } -- (3.5,0) -- cycle;
-%   \draw[->] (0,0) -- (4.0,0) node[right] {$t$};
-%   \draw[->] (0,0) -- (0,2.6) node[above] {$F$};
-%   \draw[thick, smooth, tension=0.6] plot coordinates {
-%     (0.4,0.05) (0.8,0.55) (1.3,1.30)
-%     (1.9,2.00) (2.5,1.70) (3.0,0.90) (3.5,0.10)
-%   };
-%   \node at (1.9,0.65) {\small $I = \text{área}$};
-% \end{tikzpicture}
-% \end{minipage}
-% \hfill
-% \begin{minipage}[t]{0.45\linewidth}
-% \centering
-% \begin{tikzpicture}[>=stealth, font=\small, scale=0.90]
-%   % área F(x) — curva crescente
-%   \fill[gray!20]
-%     (0.3,0) --
-%     plot[smooth] coordinates {
-%       (0.3,0.05) (0.8,0.28) (1.4,0.65)
-%       (2.0,1.15) (2.6,1.70) (3.2,2.20)
-%     } -- (3.2,0) -- cycle;
-%   \draw[->] (0,0) -- (4.0,0) node[right] {$x$};
-%   \draw[->] (0,0) -- (0,2.6) node[above] {$F$};
-%   \draw[thick, smooth] plot coordinates {
-%     (0.3,0.05) (0.8,0.28) (1.4,0.65)
-%     (2.0,1.15) (2.6,1.70) (3.2,2.20)
-%   };
-%   \node at (2.3,0.45) {\small $W = \text{área}$};
-% \end{tikzpicture}
-% \end{minipage}
-% \captionof{figure}{O mesmo argumento aplicado a outros gráficos: a área sob $F(t)$ é o impulso; a área sob $F(x)$ é o trabalho.}
-% \label{fig_apendice_area_aplicacoes}
-% }
-% \vspace{0.3cm}
 
 Nos três casos --- $v(t)$, $F(t)$, $F(x)$ --- o mesmo argumento fornece o mesmo resultado: a área sob o gráfico é o produto acumulado das duas grandezas envolvidas, mesmo quando uma delas varie. A área é a linguagem da variação.

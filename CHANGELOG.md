@@ -46,6 +46,45 @@ Tipos:
 
 ---
 
+## 2026-05-27 (continuação) — Fase A: fixes estruturais a partir do log Overleaf
+
+Branch: `fix/estrutural-relatorio-trilha-a`. Quatro commits aplicando achados do log de compilação real do Overleaf (601 páginas, ~58 MB), em vez do relatório estático da v2 (que tinha falso positivo importante).
+
+### `[DOCS]` Falso positivo identificado
+- Relatório v2 reportou "11 refs `eq_energia_*` quebradas" em `partIIdinamica02energia.tex`. Investigação na v1 mostrou que `\eqLdois{tipo}{label}{formula}` (definido em `main.tex:129`) **já emite `\label{#2}` internamente**. O grep estático do relatório não conhecia esse comando. Log do Overleaf confirma: **zero** `Reference undefined` em 601 páginas.
+
+### `[FIX]` Preâmbulo `main.tex` (commit `1924f86`)
+- `\PassOptionsToPackage{full}{textcomp}` antes de `Baskervaldx` — resolve option clash com `stix2[full]`.
+- Adicionado `\usepackage{booktabs}` (resolve `\toprule`/`\midrule`/`\bottomrule` undefined em `partIIdinamica01newton.tex:2330`).
+- Adicionado `\usepackage{ragged2e}` (resolve `\RaggedRight` undefined em tabular de `partIIdinamica02energia.tex:3181`).
+- Removidas 3 duplicatas de `\usepackage{tcolorbox}`, 1 de `\usepackage{epigraph}`, 2 de `\usepackage{xcolor}`, 1 `\tcbuselibrary` (já vem com `[most]`).
+
+### `[FIX]` Erros de compilação no body (commit `ac61f4c`)
+- `00comousar.tex:59,75` — `}` extra/faltante em `\boxed{...}` dentro de tcolorbox.
+- `partIcinematica01escalar.tex:2496-2520` — 5 alternativas (a-e) de exemplo abriam `\left(` sem `$` inicial. Linha 2626: `a^\cancel{2}` → `a^{\cancel{2}}` (operador `^` engolia `\cancel` como argumento).
+- `partIIdinamica01newton.tex:2351,2355,2357,2362` — 4 `\tag{N}` em `$$...$$` (TeX puro não suporta; só amsmath). Envolvidos em `equation*`.
+- `partIIdinamica02energia.tex:988` — `m^\cancel 2` → `m^{\cancel{2}}`. Linha 1108: `\hline` solto fora de tabular (gera `Misplaced \noalign`) → `\noindent\rule{\textwidth}{0.4pt}`.
+- `partIV0gravidade.tex:779,1532` — `N{\cdot}m²/kg²` com superscripts unicode fora de math → `$\text{N}{\cdot}\text{m}^2/\text{kg}^2$`. Linha 989: `r^ \cancel2` → `r^{\cancel{2}}`.
+
+### `[FIX]` 5 labels duplicados renomeados (commit `1febc72`)
+Acusados pelo log via `Label X multiply defined`. Nenhum referenciado externamente (verificado por grep). Sufixo `b` na segunda ocorrência:
+- `exemplo_newton_poliamovel03` → `…03b` (linha 3240 + linha 3316 comentada).
+- `exemplo_newton_vloopex02` → `…02b` (linha 5270).
+- `exemplo_newton_impulso` → `…impulsob` (linha 6032).
+- `exemplo_dinamicarotacao_teorema3forcasex02` → `…02b` (linha 8083).
+- `exemplo_gravitacao_velocidadedeescapeex03` → `…03b` (linha 2097, `partIV0gravidade.tex`).
+
+### `[CHORE]` Limpeza e flags de DRAFT (commit `07ca29e`)
+- `apendiceareagraficovxt.tex` — removidos 3 blocos de TikZ alternativo comentado (linhas 36-54, 81-135, 188-233), 120 linhas mortas no total. Labels ativos das figuras preservados. Resultado: 234 → 114 linhas, idêntico à v2.
+- `partVcolisoes.tex` (stub `\chapter{Colisões}` sem conteúdo) e `rascunho.tex` (templates + TODO) marcados com header `% DRAFT - NAO incluido em main.tex` para deixar a intenção explícita.
+
+### `[OPEN]` Itens não tratados nesta fase
+- 4 `pdfTeX warning: destination with the same identifier (equation.X.Y) has been already used, duplicate ignored` (cap. 3, 5, 7, 8). Warning, não quebra compilação; requer investigação mais profunda do uso de `\eqLdois` em conjunto com `equation` env nessas equações específicas.
+- 13 issues críticos visuais + 62 médios identificados nos lotes B1-B4 do relatório v2. Atacar na **Fase B** com PDF do Overleaf como referência.
+- 7 padrões recorrentes (quebra ruim de exemplos, figura longe da `\ref`, captions distantes etc.) — Fase B.
+
+---
+
 ## Nota sobre análise de diagramação
 
 A análise visual + estrutural completa (5 relatórios) foi feita sobre a **versão v2 do projeto**, hospedada em [`Universo-Narrado/gfe-fisica`](https://github.com/Universo-Narrado/gfe-fisica). Os achados de **padrões recorrentes** (figuras longe da referência, captions distantes, viúvas em exemplos, etc.) e da **trilha estrutural** (refs quebradas, pacotes duplicados em `main.tex`, equações sem label) **provavelmente também se aplicam a este projeto** — recomendado revisitar.
