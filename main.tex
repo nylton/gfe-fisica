@@ -125,6 +125,9 @@ bottom=3.04cm}
 \usepackage{lettrine}
 \setcounter{DefaultLines}{3}
 
+% QR code para pagina de errata participativa (back matter)
+\usepackage{qrcode}
+
 % --- Fase B-2: Pull quote Variante B (aspas tipograficas grandes) ---
 % Spec: definicoes-diagramacao/implementacao_pullquote_variante_B.md
 % Uso: \pullquote{texto} ou \pullquote[atribuicao]{texto}
@@ -742,15 +745,22 @@ bottom=3.04cm}
 
 
 
+% --- Front matter: paginas em algarismos romanos minusculos ---
+\frontmatter
 \maketitle
 
-
+\include{cipfichacatalografica}
 
 \tableofcontents
 
 \include{00dedicatoria}
 \include{prefacio}
 \include{00comousar}
+\include{convencoes}
+\include{constantes}
+
+% --- Main matter: capitulos numerados, paginas em arabico desde 1 ---
+\mainmatter
 \include{00introducao}
 
 
@@ -810,9 +820,14 @@ bottom=3.04cm}
 \include{apendiceteoremaenergiacinetica}
 \include{apendicearte}
 
+% --- Back matter: bibliografia, errata, indice ---
+\backmatter
+
 \nocite{*}
 \bibliographystyle{apalike}
 \bibliography{references}
+
+\include{errata}
 
 \end{document}
 

@@ -1,0 +1,64 @@
+% !TeX spellcheck = pt_BR
+% ============================================================
+% Convencoes e notacao usadas no livro
+% ============================================================
+
+\chapter*{Convenções e Notação}
+\addcontentsline{toc}{chapter}{Convenções e Notação}
+
+Este capítulo serve de referência rápida para as convenções tipográficas
+e notacionais adotadas ao longo do livro.
+
+\section*{Classificação das equações}
+
+Toda equação apresentada é classificada por dois critérios independentes,
+indicados visualmente na sua caixa de apresentação:
+
+\begin{itemize}
+  \item \textbf{Nível} (I, II ou III): indica a profundidade conceitual.
+  \begin{itemize}
+    \item \textbf{Nível I:} fundamentais, indicadas a todos os leitores.
+    \item \textbf{Nível II:} aprofundamentos para vestibulares concorridos
+    (medicina, exatas) ou estudos posteriores.
+    \item \textbf{Nível III:} avançadas, voltadas a olímpiadas
+    (OBF, IpHO) e vestibulares militares (IME, ITA).
+  \end{itemize}
+
+  \item \textbf{Tipo} epistemológico:
+  \begin{itemize}
+    \item \textbf{Definição} ({def}): cria um conceito novo. Não pode
+    ser errada --- é convenção.
+    \item \textbf{Experimental} ({exp}): nasce de medições. Síntese
+    matemática de como a natureza se comporta.
+    \item \textbf{Demonstrável} ({dem}): consequência lógica de
+    definições e equações experimentais já estabelecidas.
+  \end{itemize}
+\end{itemize}
+
+\section*{Notação matemática}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{>{\centering\arraybackslash}p{3cm} l}
+\toprule
+\textbf{Símbolo} & \textbf{Significado} \\
+\midrule
+$:=$           & Definição (lado esquerdo é definido pelo direito) \\
+$\implies$     & Implica (segue logicamente de) \\
+$\Delta x$     & Variação da grandeza $x$ ($x_{\text{final}} - x_{\text{inicial}}$) \\
+$\vec{v}$      & Grandeza vetorial \\
+$v$            & Módulo (ou componente escalar) da grandeza vetorial \\
+$\hat{x}$      & Vetor unitário na direção do eixo $x$ \\
+$|\vec{v}|$    & Norma (módulo) de um vetor \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Notação de unidades}
+
+As unidades adotadas seguem o Sistema Internacional (SI) ao longo de
+todo o livro, salvo indicação explícita em contrário. Quando aplicável,
+unidades são expressas usando o pacote \texttt{siunitx}, por exemplo:
+$g = 9{,}8 \text{ m/s}^2$.
+
+\clearpage
