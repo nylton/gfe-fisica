@@ -92,6 +92,33 @@ bottom=3.04cm}
 \setlength{\intextsep}{16pt plus 2pt minus 2pt}
 \setlength{\floatsep}{14pt plus 2pt minus 2pt}
 
+% --- Fase B-1: Visual primitives (sistema de densidades, filetes, figuras) ---
+% 6 densidades de tinta P&B (estetica guide):
+\definecolor{tinta}{cmyk}{0,0,0,1}        % 100% corpo
+\definecolor{tinta80}{cmyk}{0,0,0,0.80}   %  80% subtitulos
+\definecolor{tinta50}{cmyk}{0,0,0,0.50}   %  50% filetes/marginalia
+\definecolor{tinta20}{cmyk}{0,0,0,0.20}   %  20% bordas
+\definecolor{tinta10}{cmyk}{0,0,0,0.10}   %  10% fundos
+\definecolor{tinta04}{cmyk}{0,0,0,0.04}   %   4% diferenciacao sutil
+
+% 6 pesos canonicos de filete (regua horizontal):
+\newcommand{\fileteleve}{\noindent\rule{\linewidth}{0.4pt}}      % internas
+\newcommand{\filetenormal}{\noindent\rule{\linewidth}{0.8pt}}    % secoes tematicas
+\newcommand{\filetecap}{\noindent\rule{\linewidth}{1.5pt}}       % capitulos
+\newcommand{\fileteforte}{\noindent\rule{\linewidth}{3pt}}       % forte
+\newcommand{\filetedup}{%                                         % duplo (Atos)
+  \noindent\rule{\linewidth}{0.4pt}\\[2pt]%
+  \noindent\rule{\linewidth}{0.4pt}}
+\newcommand{\fileteatobr}{%                                       % grosso+fino (half-title)
+  \noindent\rule{\linewidth}{2pt}\\[1pt]%
+  \noindent\rule{\linewidth}{0.4pt}}
+
+% 4 tamanhos canonicos de figura (relativos a textwidth):
+\newcommand{\figpequena}[1]{\includegraphics[width=0.40\textwidth]{#1}}
+\newcommand{\figmedia}[1]{\includegraphics[width=0.60\textwidth]{#1}}
+\newcommand{\figgrande}[1]{\includegraphics[width=0.80\textwidth]{#1}}
+\newcommand{\figlarga}[1]{\includegraphics[width=0.95\textwidth]{#1}}
+
 
 %Definiçao do ambiente para apresentar equações
 % ─── Pacotes necessários ──────────────────────────────────────────
