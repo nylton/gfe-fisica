@@ -125,6 +125,47 @@ bottom=3.04cm}
 \usepackage{lettrine}
 \setcounter{DefaultLines}{3}
 
+% --- Fase B-2: Pull quote Variante B (aspas tipograficas grandes) ---
+% Spec: definicoes-diagramacao/implementacao_pullquote_variante_B.md
+% Uso: \pullquote{texto} ou \pullquote[atribuicao]{texto}
+% tikz ja carregado acima; calc nao e necessario na variante final.
+\definecolor{aspaclara}{cmyk}{0,0,0,0.20}        % aspa em ~20% de tinta
+\definecolor{atribuicaocinza}{cmyk}{0,0,0,0.50}  % atribuicao em ~50%
+
+\newcommand{\pullquote}[2][]{%
+  \par\vspace{1.8em}%
+  \begin{center}%
+    \begin{minipage}{0.78\linewidth}%
+      \centering
+      \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=south east,
+              text=aspaclara,
+              font=\fontsize{56pt}{56pt}\selectfont,
+              inner sep=0pt]
+              at (current bounding box.north west)
+              {\textquotedblleft};
+      \end{tikzpicture}%
+      %
+      {\large\itshape #2\par}%
+      %
+      \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north west,
+              text=aspaclara,
+              font=\fontsize{56pt}{56pt}\selectfont,
+              inner sep=0pt]
+              at (current bounding box.south east)
+              {\textquotedblright};
+      \end{tikzpicture}%
+      %
+      \ifx&#1&\else
+        \par\vspace{0.8em}%
+        {\footnotesize\scshape\color{atribuicaocinza} #1\par}%
+      \fi
+    \end{minipage}%
+  \end{center}%
+  \par\vspace{1.8em}%
+}
+
 
 %Definiçao do ambiente para apresentar equações
 % ─── Pacotes necessários ──────────────────────────────────────────
