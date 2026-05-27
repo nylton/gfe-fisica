@@ -128,42 +128,37 @@ bottom=3.04cm}
 % --- Fase B-2: Pull quote Variante B (aspas tipograficas grandes) ---
 % Spec: definicoes-diagramacao/implementacao_pullquote_variante_B.md
 % Uso: \pullquote{texto} ou \pullquote[atribuicao]{texto}
-% tikz ja carregado acima; calc nao e necessario na variante final.
-\definecolor{aspaclara}{cmyk}{0,0,0,0.20}        % aspa em ~20% de tinta
+% Implementacao sem tikz overlay (mais deterministica),
+% aspas curvas italicas em 72pt, cinza 30%.
+\definecolor{aspaclara}{cmyk}{0,0,0,0.30}        % aspa em ~30% de tinta
 \definecolor{atribuicaocinza}{cmyk}{0,0,0,0.50}  % atribuicao em ~50%
 
 \newcommand{\pullquote}[2][]{%
-  \par\vspace{1.8em}%
+  \par\vspace{2em}%
   \begin{center}%
-    \begin{minipage}{0.78\linewidth}%
-      \centering
-      \begin{tikzpicture}[remember picture, overlay]
-        \node[anchor=south east,
-              text=aspaclara,
-              font=\fontsize{56pt}{56pt}\selectfont,
-              inner sep=0pt]
-              at (current bounding box.north west)
-              {\textquotedblleft};
-      \end{tikzpicture}%
-      %
-      {\large\itshape #2\par}%
-      %
-      \begin{tikzpicture}[remember picture, overlay]
-        \node[anchor=north west,
-              text=aspaclara,
-              font=\fontsize{56pt}{56pt}\selectfont,
-              inner sep=0pt]
-              at (current bounding box.south east)
-              {\textquotedblright};
-      \end{tikzpicture}%
-      %
-      \ifx&#1&\else
-        \par\vspace{0.8em}%
-        {\footnotesize\scshape\color{atribuicaocinza} #1\par}%
-      \fi
-    \end{minipage}%
+  \begin{minipage}{0.78\linewidth}%
+    % Aspa esquerda, alinhada a esquerda, italica grande
+    {\noindent\color{aspaclara}\fontsize{72pt}{0pt}\selectfont\itshape%
+     \textquotedblleft}%
+    \par\vspace{-1.2em}%
+    % Texto centralizado, italico, corpo maior
+    \begin{center}
+      \large\itshape #2
+    \end{center}
+    \par\vspace{-1.4em}%
+    % Aspa direita, alinhada a direita, italica grande
+    {\hfill\color{aspaclara}\fontsize{72pt}{0pt}\selectfont\itshape%
+     \textquotedblright\par}%
+    % Atribuicao opcional, smallcaps cinza medio
+    \ifx&#1&\else
+      \par\vspace{0.8em}%
+      \begin{center}
+        {\footnotesize\scshape\color{atribuicaocinza} #1}%
+      \end{center}
+    \fi
+  \end{minipage}%
   \end{center}%
-  \par\vspace{1.8em}%
+  \par\vspace{2em}%
 }
 
 
