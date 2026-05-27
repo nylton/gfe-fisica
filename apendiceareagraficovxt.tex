@@ -20,7 +20,11 @@ No gráfico de $v$ por $t$, a velocidade constante corresponde a uma linha horiz
 \vspace{0.3cm}
 {
 \centering
-\includegraphics[width=0.35\linewidth]{imagensapendices/areagrafico01.png}
+\begin{tikzpicture}
+  \begin{scope}[blend mode=multiply]
+    \node {\includegraphics[width=0.35\linewidth]{imagensapendices/areagrafico01.png}};
+  \end{scope}
+\end{tikzpicture}
 \captionof{figure}{Velocidade constante: a distância é exatamente a área do retângulo.}
 \label{fig_apendice_area_constante}
 } 
@@ -64,7 +68,11 @@ Contudo, note que, geometricamente, $v_i \cdot \Delta t_i$ é a área de um ret�
 \vspace{0.3cm}
 {
 \centering
-\includegraphics[width=0.95\linewidth]{imagensapendices/areagrafico02.png}
+\begin{tikzpicture}
+  \begin{scope}[blend mode=multiply]
+    \node {\includegraphics[width=0.95\linewidth]{imagensapendices/areagrafico02.png}};
+  \end{scope}
+\end{tikzpicture}
 \captionof{figure}{Da esquerda para a direita: uma fatia isolada com altura $v_i$ e largura $\Delta t_i$; a soma de todas as fatias (aproximação da área); no limite de fatias infinitamente finas, a área exata corresponde à distância total percorrida.}
 \label{fig_apendice_area_fatias}
 } 
@@ -167,7 +175,11 @@ A lógica desenvolvida acima não depende de nenhuma propriedade especial da vel
 \vspace{0.3cm}
 {
 \centering
-\includegraphics[width=0.75\linewidth]{imagensapendices/areagrafico03.png}
+\begin{tikzpicture}
+  \begin{scope}[blend mode=multiply]
+    \node {\includegraphics[width=0.75\linewidth]{imagensapendices/areagrafico03.png}};
+  \end{scope}
+\end{tikzpicture}
 \captionof{figure}{O mesmo argumento aplicado a outros gráficos: a área sob $F(t)$ é o impulso; a área sob $F(x)$ é o trabalho.}
 \label{fig_apendice_area_aplicacoes}
 } 

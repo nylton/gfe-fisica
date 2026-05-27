@@ -75,7 +75,11 @@ Figura
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.18]{imagensmecanica/acelerecao02.jpeg}
+    \begin{tikzpicture}
+      \begin{scope}[blend mode=multiply]
+        \node {\includegraphics[scale=0.18]{imagensmecanica/acelerecao02.jpeg}};
+      \end{scope}
+    \end{tikzpicture}
     \caption{Carro em movimento acelerado e o padrão de aumento de velocidade}
     \label{fig_mec_aceleracao02}
 \end{figure}
@@ -84,7 +88,11 @@ Figura
 \vspace{0.3cm}
 {
 \centering
-\includegraphics[width=0.6\linewidth]{imagensmecanica/sorveteexemplo013.jpeg}
+\begin{tikzpicture}
+  \begin{scope}[blend mode=multiply]
+    \node {\includegraphics[width=0.6\linewidth]{imagensmecanica/sorveteexemplo013.jpeg}};
+  \end{scope}
+\end{tikzpicture}
 \captionof{figure}{Referencial orientado para esquerda com origem arbitrária.}
 \label{fig_mec_sorveteexemplo013}
 } 
