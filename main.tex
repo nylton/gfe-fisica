@@ -61,9 +61,12 @@ bottom=3.04cm}
 \setlength{\epigraphrule}{0pt}
 \usepackage{caption}
 \captionsetup{
-  justification=centering,
+  justification=centerlast,
+  width=0.85\textwidth,
   labelfont=bf,
-  font=small
+  font=small,
+  aboveskip=10pt,
+  belowskip=2pt
 }
 \usepackage{xcolor}
 \definecolor{marfim}{RGB}{255, 253, 240} % ajuste aqui
@@ -73,6 +76,21 @@ bottom=3.04cm}
 \usepackage{float}
 \raggedbottom          % elimina o espaço elástico entre blocos
 \usepackage{needspace} % evita exemplos "órfãos" no fim de página
+
+% --- Fase B-1: P0 typography (anti-orfaos + spacing canonico) ---
+% Evita display math suspenso em fim de pagina:
+\predisplaypenalty=10000
+\postdisplaypenalty=300
+
+% Garante espaco minimo antes de cada heading (anti-orfao de titulo):
+\pretocmd{\section}{\needspace{8\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{6\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\needspace{5\baselineskip}}{}{}
+
+% Espacamento canonico de floats (diagramacao guide P0):
+\setlength{\textfloatsep}{16pt plus 2pt minus 2pt}
+\setlength{\intextsep}{16pt plus 2pt minus 2pt}
+\setlength{\floatsep}{14pt plus 2pt minus 2pt}
 
 
 %Definiçao do ambiente para apresentar equações
