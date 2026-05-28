@@ -82,6 +82,13 @@ bottom=3.04cm}
 \predisplaypenalty=10000
 \postdisplaypenalty=300
 
+% Margens de display math (formulas separadas do texto: $$, \\[, align*, etc):
+% Convencao tipografica: belowdisplayskip > abovedisplayskip (olho desce, precisa mais respiro).
+\setlength{\abovedisplayskip}{12pt plus 3pt minus 3pt}
+\setlength{\belowdisplayskip}{18pt plus 4pt minus 4pt}
+\setlength{\abovedisplayshortskip}{6pt plus 3pt minus 3pt}
+\setlength{\belowdisplayshortskip}{12pt plus 4pt minus 4pt}
+
 % Garante espaco minimo antes de cada heading (anti-orfao de titulo):
 \pretocmd{\section}{\needspace{8\baselineskip}}{}{}
 \pretocmd{\subsection}{\needspace{6\baselineskip}}{}{}
